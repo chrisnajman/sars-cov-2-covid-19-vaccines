@@ -116,7 +116,7 @@ img {
 li p {
   width: 100%;
 }
-@supports (width: fit-content) {
+@supports ((width: fit-content) or (width: -moz-fit-content)) {
   h1,
   h2,
   h3,
