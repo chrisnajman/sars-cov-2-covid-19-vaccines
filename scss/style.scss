@@ -12,7 +12,6 @@ $glossaryHighlight: rgb(18, 136, 67);
 }
 
 @mixin constrain($width, $maxwidth) {
-  @include marginCentre;
   width: $width;
   max-width: $maxwidth;
 }
@@ -126,6 +125,13 @@ li p {
   ol,
   p {
     width: fit-content;
+    @include marginCentre;
+  }
+  .sars-cov-19 {
+    @include marginCentre;
+  }
+
+  .vaccine-type {
     @include marginCentre;
   }
 }
