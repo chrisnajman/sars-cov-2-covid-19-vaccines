@@ -124,6 +124,7 @@ li p {
   ul,
   ol,
   p {
+    width: -moz-fit-content;
     width: fit-content;
     @include marginCentre;
   }
@@ -181,10 +182,6 @@ p {
       padding-bottom: 2rem;
       border-bottom: 8px solid $text;
     }
-  }
-
-  h2 {
-    text-transform: uppercase;
   }
 }
 
