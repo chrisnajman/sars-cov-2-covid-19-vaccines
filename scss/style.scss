@@ -1,0 +1,345 @@
+$fontSpecial: "Arial Thin", sans-serif;
+$strongFontWeight: 600;
+$text: rgb(39, 39, 39);
+$link: #5357a6;
+$linkHover: #841e1e;
+$bodybg: #f8fbfe;
+$glossaryHighlight: rgb(18, 136, 67);
+
+@mixin marginCentre {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin constrain($width, $maxwidth) {
+  @include marginCentre;
+  width: $width;
+  max-width: $maxwidth;
+}
+
+/* Show only to screenreaders */
+.sr-only {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  @media screen and (min-width: 1400px) {
+    margin-bottom: 1.5rem;
+  }
+}
+
+html {
+  overflow-y: scroll;
+  margin-bottom: 0;
+  font-size: 100%;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: $bodybg;
+  color: $text;
+
+  @media screen and (min-width: 1400px) {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: $strongFontWeight;
+  font-family: $fontSpecial;
+}
+
+h1 {
+  font-size: 2rem;
+  padding: 1rem 0 0 0;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+
+  @media screen and (min-width: 960px) {
+    font-size: 3rem;
+    padding: 2rem 0 0 0;
+  }
+}
+
+h2 {
+  font-size: 1.6rem;
+
+  padding-top: 1.5rem;
+
+  @media screen and (min-width: 960px) {
+    font-size: 1.9rem;
+    padding-top: 2rem;
+  }
+}
+
+h3 {
+  font-size: 1.4rem;
+  padding-top: 1rem;
+
+  @media screen and (min-width: 960px) {
+    font-size: 1.6rem;
+    padding-top: 2rem;
+  }
+}
+
+h4 {
+  font-size: 1.3rem;
+
+  @media screen and (min-width: 960px) {
+    font-size: 1.4rem;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 0;
+  @include marginCentre;
+}
+li p {
+  width: 100%;
+}
+@supports (width: fit-content) {
+  h1,
+  h2,
+  h3,
+  h4,
+  ul,
+  ol,
+  p {
+    width: fit-content;
+    @include marginCentre;
+  }
+}
+
+ul,
+ol,
+p {
+  max-width: 60ch;
+}
+
+.center {
+  @include marginCentre;
+}
+
+.bullets {
+  list-style: disc;
+}
+
+.no-bullets {
+  padding-left: 0;
+  list-style: none;
+}
+
+.bold-special {
+  font-weight: $strongFontWeight;
+  font-family: $fontSpecial;
+}
+
+.credit {
+  font-size: 70%;
+}
+
+.header {
+  &-image {
+    @include constrain(90%, 400px);
+  }
+
+  span {
+    display: block;
+    text-align: center;
+  }
+
+  ul {
+    border-bottom: 5px solid $text;
+    padding-bottom: 1rem;
+    @media screen and (min-width: 1280px) {
+      padding-bottom: 2rem;
+      border-bottom: 8px solid $text;
+    }
+  }
+
+  h2 {
+    text-transform: uppercase;
+  }
+}
+
+.container {
+  padding: 0 1rem 1rem 1rem;
+
+  @media screen and (max-width: 600px) {
+    padding-top: 2rem;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding: 0 2rem 2rem 2rem;
+  }
+}
+
+.article {
+  padding-bottom: 2rem;
+  max-width: 110.25rem; // 1764px;
+
+  @include marginCentre;
+
+  @media screen and (min-width: 1280px) {
+    padding-bottom: 3rem;
+  }
+}
+
+.sars-cov-19 {
+  @include constrain(70%, 480px);
+}
+
+.vaccine-type {
+  @include constrain(70%, 360px);
+}
+
+.image-info {
+  padding: 1rem 0;
+  border-bottom: 2px solid $text;
+
+  &.no-border {
+    border: 0;
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding: 2rem 0;
+    display: flex;
+
+    &-reverse {
+      flex-direction: row-reverse;
+    }
+    justify-content: space-between;
+
+    ul,
+    ol,
+    p {
+      width: auto;
+      @include marginCentre;
+    }
+  }
+
+  &-image {
+    display: block;
+
+    @media screen and (min-width: 1024px) {
+      width: 50%;
+    }
+
+    img {
+      border: 1px solid rgb(138, 137, 137);
+      max-width: 100%;
+      @media screen and (min-width: 740px) {
+        max-width: 90%;
+      }
+    }
+  }
+
+  &-info {
+    padding: 1rem 0;
+    @media screen and (min-width: 1024px) {
+      display: flex;
+      align-items: center;
+      width: 50%;
+      padding: 0 2rem;
+    }
+  }
+}
+
+.counter-list {
+  padding-left: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+
+  li {
+    counter-increment: list-number;
+    position: relative;
+    padding-left: 3rem;
+    p {
+      margin-bottom: 0;
+    }
+    &::before {
+      content: counter(list-number);
+      margin: 0 0 0 0;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2rem;
+      height: 2rem;
+      text-align: center;
+      font-size: 1rem;
+      font-family: $fontSpecial;
+      font-weight: $strongFontWeight;
+      background-color: white;
+      border: 3px solid $text;
+      border-radius: 50%;
+      color: $text;
+      line-height: 1.7rem;
+    }
+  }
+}
+
+.page-footer {
+  padding-bottom: 2rem;
+  border-top: 5px solid $text;
+
+  @media screen and (min-width: 1280px) {
+    border-top: 8px solid $text;
+    padding-bottom: 3rem;
+  }
+}
+
+a {
+  font-family: $fontSpecial;
+  text-decoration: none;
+  font-weight: 600;
+  color: $link;
+
+  &.url-text {
+    word-break: break-all;
+  }
+
+  &:hover {
+    color: $linkHover;
+  }
+  &.ref {
+    display: block;
+    padding-top: 1rem;
+    text-align: right;
+    font-weight: 400;
+    border-bottom: 1px dotted $link;
+  }
+}
+
+.block {
+  display: block;
+}
+
+.asterisk-note {
+  display: block;
+  padding-top: 1rem;
+}
+
+.asterisk {
+  font-weight: $strongFontWeight;
+  color: red;
+}
