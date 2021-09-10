@@ -179,8 +179,8 @@ p {
     border-bottom: 5px solid $text;
     padding-bottom: 1rem;
     @media screen and (min-width: 1280px) {
-      padding-bottom: 2rem;
       border-bottom: 8px solid $text;
+      padding-bottom: 2rem;
     }
   }
 }
