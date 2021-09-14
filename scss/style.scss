@@ -8,6 +8,20 @@ $glossaryHighlight: rgb(18, 136, 67);
 
 // rem to px: * 16 | px to rem: / 16
 
+/* 
+  Emulate retina display.
+  E.g. for 2x images, place following in body { ... }:
+
+  @include retinaEmulator(200%, 2);
+
+  etc.
+*/
+@mixin retinaEmulator($percent, $scale) {
+  zoom: $percent;
+  -moz-transform: scale($scale);
+  -moz-transform-origin: 0 0;
+}
+
 @mixin marginCentre {
   margin-left: auto;
   margin-right: auto;
@@ -89,7 +103,7 @@ body {
 
   @media screen and (min-width: 1400px) {
     font-size: 1.25rem;
-    line-height: 1.75rem;
+    line-height: 1.75;
   }
 }
 
@@ -218,7 +232,7 @@ p {
 }
 
 .article {
-  padding-bottom: 2rem;
+  padding: 0 1rem 2rem 1rem;
   max-width: 110.25rem;
   margin-bottom: 0;
 
@@ -317,7 +331,7 @@ p {
       border: 3px solid $text;
       border-radius: 50%;
       color: $text;
-      line-height: 1.7rem;
+      line-height: 1.7;
     }
   }
 }
@@ -362,6 +376,7 @@ a {
     margin-bottom: 0;
     @media screen and (min-width: 1280px) {
       display: flex;
+      overflow: hidden;
     }
   }
   &-aside {
@@ -400,7 +415,7 @@ a {
 
 /* glossary styles */
 .glossary {
-  padding-bottom: 2rem;
+  padding: 0 1rem 2rem 1rem;
 
   @media screen and (min-width: 1280px) {
     padding: 4rem 2rem 2rem 2rem;
