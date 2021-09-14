@@ -6,6 +6,8 @@ $linkHover: #841e1e;
 $bodybg: #f8fbfe;
 $glossaryHighlight: rgb(18, 136, 67);
 
+// rem to px: * 16 | px to rem: / 16
+
 @mixin marginCentre {
   margin-left: auto;
   margin-right: auto;
@@ -16,12 +18,47 @@ $glossaryHighlight: rgb(18, 136, 67);
   max-width: $maxwidth;
 }
 
-/* Show only to screenreaders */
-.sr-only {
+/* Hide but screenreader can see it */
+@mixin screenReaderHide {
   clip: rect(1px, 1px, 1px, 1px);
   height: 1px;
+  width: 1px;
+  margin: -1px;
   overflow: hidden;
-  position: absolute !important;
+  position: absolute;
+}
+
+/* Unhide screenReaderHide so everyone can see it */
+@mixin screenReaderShow {
+  clip: auto;
+  height: auto;
+  overflow: visible;
+  position: static;
+}
+
+@mixin button {
+  padding: 0.5rem;
+  background-color: white;
+  color: $link;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.11);
+  border: 0;
+  border-radius: 0 0 0 0.5rem;
+  margin: 0;
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: $fontSpecial;
+  font-weight: $strongFontWeight;
+  &:hover {
+    color: $text;
+  }
+  span {
+    margin: 0;
+  }
+
+  .openClose {
+    padding-left: 0.5rem;
+  }
 }
 
 *,
@@ -60,13 +97,12 @@ h1,
 h2,
 h3,
 h4 {
-  font-weight: $strongFontWeight;
   font-family: $fontSpecial;
 }
 
 h1 {
   font-size: 2rem;
-  padding: 1rem 0 0 0;
+  padding: 3rem 0 0 0;
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
@@ -116,6 +152,8 @@ img {
 li p {
   width: 100%;
 }
+
+/* If width: fit-content/-moz-fit-content not supported everything will align left */
 @supports ((width: fit-content) or (width: -moz-fit-content)) {
   h1,
   h2,
@@ -123,51 +161,32 @@ li p {
   h4,
   ul,
   ol,
-  p {
+  p,
+  .glossary {
     width: -moz-fit-content;
     width: fit-content;
     @include marginCentre;
   }
-  .sars-cov-19 {
-    @include marginCentre;
-  }
-
+  .sars-cov-19,
   .vaccine-type {
     @include marginCentre;
   }
 }
 
+dl,
 ul,
 ol,
 p {
   max-width: 60ch;
 }
 
-.center {
-  @include marginCentre;
-}
-
-.bullets {
-  list-style: disc;
-}
-
-.no-bullets {
-  padding-left: 0;
-  list-style: none;
-}
-
-.bold-special {
-  font-weight: $strongFontWeight;
-  font-family: $fontSpecial;
-}
-
-.credit {
-  font-size: 70%;
+.main {
+  margin-bottom: 0;
 }
 
 .header {
   &-image {
-    @include constrain(90%, 400px);
+    @include constrain(90%, 25rem);
   }
 
   span {
@@ -175,12 +194,12 @@ p {
     text-align: center;
   }
 
-  ul {
+  p {
     border-bottom: 5px solid $text;
     padding-bottom: 1rem;
     @media screen and (min-width: 1280px) {
-      border-bottom: 8px solid $text;
       padding-bottom: 2rem;
+      border-bottom: 8px solid $text;
     }
   }
 }
@@ -188,18 +207,20 @@ p {
 .container {
   padding: 0 1rem 1rem 1rem;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (min-width: 740px) {
     padding-top: 2rem;
+    padding: 2rem 0 1rem 0;
   }
 
   @media screen and (min-width: 1280px) {
-    padding: 0 2rem 2rem 2rem;
+    padding: 0;
   }
 }
 
 .article {
   padding-bottom: 2rem;
-  max-width: 110.25rem; // 1764px;
+  max-width: 110.25rem;
+  margin-bottom: 0;
 
   @include marginCentre;
 
@@ -209,11 +230,11 @@ p {
 }
 
 .sars-cov-19 {
-  @include constrain(70%, 480px);
+  @include constrain(70%, 30rem);
 }
 
 .vaccine-type {
-  @include constrain(70%, 360px);
+  @include constrain(70%, 26.5rem);
 }
 
 .image-info {
@@ -330,5 +351,129 @@ a {
     text-align: right;
     font-weight: 400;
     border-bottom: 1px dotted $link;
+  }
+}
+
+/* GLOSSARY */
+
+/* Containers grow/shrink only at min-width 1280px */
+.content {
+  &-wrapper {
+    margin-bottom: 0;
+    @media screen and (min-width: 1280px) {
+      display: flex;
+    }
+  }
+  &-aside {
+    margin-bottom: 0;
+    border-top: 2px solid $text;
+    @media screen and (min-width: 1280px) {
+      background: rgb(233, 235, 145);
+    }
+
+    @media screen and (min-width: 1280px) {
+      @include screenReaderHide;
+      transition: width 1s;
+
+      &-grow {
+        border-left: 2px solid $text;
+        border-top: 0;
+        @include screenReaderShow;
+        width: 30%;
+      }
+    }
+  }
+
+  &-main {
+    margin-bottom: 0;
+
+    width: 100%;
+    transition: width 1s;
+
+    &-shrink {
+      @media screen and (min-width: 1280px) {
+        width: 70%;
+      }
+    }
+  }
+}
+
+/* glossary styles */
+.glossary {
+  padding-bottom: 2rem;
+
+  @media screen and (min-width: 1280px) {
+    padding: 4rem 2rem 2rem 2rem;
+  }
+
+  &-title {
+    @media screen and (min-width: 1280px) {
+      @include screenReaderHide;
+    }
+  }
+
+  &-back {
+    display: block;
+    @media screen and (min-width: 1280px) {
+      display: none;
+    }
+  }
+
+  &-links {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &-anchor {
+    display: block;
+    @include button;
+
+    @media screen and (min-width: 1280px) {
+      display: none;
+    }
+  }
+
+  &-button {
+    display: none;
+
+    @include button;
+
+    .openClose {
+      font-size: 1.5rem;
+    }
+
+    @media screen and (min-width: 1280px) {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  dl {
+    font-size: 1rem;
+  }
+
+  dt {
+    font-weight: $strongFontWeight;
+    font-family: $fontSpecial;
+
+    @media screen and (min-width: 1280px) {
+      margin-bottom: 0;
+    }
+  }
+
+  dd {
+    margin-left: 1rem;
+    @media screen and (min-width: 1024px) {
+      margin-left: 0;
+    }
+  }
+  p {
+    width: auto;
+    font-size: 1rem;
+  }
+
+  &-text-highlight {
+    color: $glossaryHighlight;
   }
 }

@@ -1,13 +1,6 @@
 *.txt
 *.psd
 notepad.html
-index-with-glossary.html
-index-immune.html
-slideout.html
-css/style-with-glossary.css
-css/style-immune.css
-scss/style-with-glossary.scss
-scss/style-immune.scss
 js/accordion.js
 js/slideout.js
 

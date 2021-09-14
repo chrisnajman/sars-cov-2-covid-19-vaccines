@@ -20,16 +20,23 @@
     <meta name="theme-color" content="#ffffff" />
     <title>SARS-CoV-2 and Covid-19 Vaccines</title>
     <link rel="stylesheet" href="css/style.css" />
+    <script src="js/script.js" defer></script>
   </head>
 
   <body>
-    <div class="container">
-      <main class="main">
-        <article class="article">
+    <nav class="glossary-links">
+      <button class="glossary-button" data-glossary-button>
+        <span>Glossary</span> <span data-open-close class="openClose">+</span>
+      </button>
+      <a href="#glossary" class="glossary-anchor">Glossary</a>
+    </nav>
+    <div class="container content-wrapper">
+      <main class="main content-main">
+        <article class="article" id="pageTop">
           <header class="header">
             <h1>
               <span>SARS-CoV-2 and Covid-19 Vaccines</span>
-              <div class="header-image">
+              <span class="header-image">
                 <picture>
                   <source srcset="img/logo.webp" type="image/webp" />
                   <img
@@ -37,7 +44,7 @@
                     alt="SARS-CoV-2 flanked by the Oxford-Astrazeneca and Pfizer/BioNTech vaccines"
                   />
                 </picture>
-              </div>
+              </span>
             </h1>
 
             <h2>Introduction</h2>
@@ -48,26 +55,6 @@
               responses, both to the vaccine itself and to post-vaccination
               viral invasion.
             </p>
-            <h3>A Note on MHC1 cell receptors and the immune response</h3>
-            <ul>
-              <li>
-                Special receptors (MHC1s) are present on the surface of every
-                cell.
-              </li>
-              <li>
-                Fragments of all proteins produced inside the cell, benevolent
-                or otherwise, will be displayed on these MHC1 receptors.
-              </li>
-              <li>
-                In their turn, these fragments will be presented to cells of the
-                immune system.
-              </li>
-              <li>
-                The immune system will then memorise the characteristics of the
-                protein, and attempt to neutralise or destroy the pathogen
-                wherever and whenever it is encountered.
-              </li>
-            </ul>
           </header>
 
           <section>
@@ -132,7 +119,7 @@
                     receptors.
                   </li>
                   <li>
-                    Endosomic containment of genomic RNA and viral proteins,
+                    Endosomal containment of genomic RNA and viral proteins,
                     followed by assembly into new virion.
                   </li>
                   <li>Virion buds via exocytosis.</li>
@@ -258,7 +245,7 @@
                       Fragments of S protein display on the host cell MHC1
                       receptors.
                     </li>
-                    <li>Endosomic containment of S protein.</li>
+                    <li>Endosomal containment of S protein.</li>
                     <li>The endosome is transported to the cell surface.</li>
                     <li>S protein exits the cell via exocytosis.</li>
                   </ol>
@@ -320,7 +307,7 @@
                       Fragments of S protein display on the host cell MHC1
                       receptors.
                     </li>
-                    <li>Endosomic containment of S protein.</li>
+                    <li>Endosomal containment of S protein.</li>
                     <li>The endosome is transported to the cell surface.</li>
                     <li>S protein exits the cell via exocytosis.</li>
                   </ol>
@@ -336,8 +323,13 @@
               the vaccine.
             </p>
             <p>
-              Note: what follows is a <em>simplified</em> account of the
-              workings of the immune system.
+              Note:
+              <em
+                >what follows is a simplified account of the workings of the
+                immune response, in particular omitting much of the work of the
+                innate immune system and highlighting the workings of the
+                adaptive immune system instead</em
+              >.
             </p>
             <section>
               <h3>Immune response to a vaccine</h3>
@@ -367,14 +359,13 @@
                   <div>
                     <h4>A</h4>
                     <p>
-                      S proteins have exited the cell. In the extracellular
-                      space there floats a cytotoxic T-cell and a B-cell, both
-                      part of the adaptive immune system. Also present is a
-                      macrophage, an antigen presenting cell belonging to the
-                      innate immune system. Macrophages patrol the extracellular
-                      space looking for potential pathogens. A helper T-cell,
-                      responsible for coordinating the activities of the
-                      adaptive immune system is nearby.
+                      S proteins have exited the cell. A cytotoxic T-cell and a
+                      B-cell, both part of the adaptive immune system, are
+                      present, along with a macrophage, an antigen presenting
+                      cell belonging to the innate immune system. Macrophages
+                      patrol the extracellular space looking for potential
+                      pathogens. A helper T-cell, responsible for coordinating
+                      the activities of the adaptive immune system is nearby.
                     </p>
                     <ol class="counter-list">
                       <li>
@@ -459,8 +450,8 @@
                       </li>
                       <li>
                         Clonal proliferation and activation of memory and
-                        cytotoxic T-cells, which emit chemokines (granzymes and
-                        perforins) to destroy the infected cell.
+                        cytotoxic T-cells, which emit granzymes and perforins to
+                        destroy the infected cell.
                       </li>
                       <li>
                         Clonal proliferation and activation of B-cells and
@@ -567,8 +558,8 @@
                       <li>
                         A cytotoxic T-cell binds to the fragment of the S
                         protein presented on the MHC1 receptor. This stimulates
-                        the production of chemokines which destroy the infected
-                        cell.
+                        the production of granzymes and perforins which destroy
+                        the infected cell.
                       </li>
                     </ol>
                   </div>
@@ -595,6 +586,136 @@
         </article>
       </main>
 
+      <aside class="content-aside">
+        <h2 id="glossary" class="glossary-title">Glossary</h2>
+        <div class="glossary">
+          <p>Terms not described in the main text are listed here.</p>
+          <dl class="glossary-items">
+            <dt>Antibody</dt>
+            <dd>
+              Proteins produced by B-cells that specifically bind antigens.
+            </dd>
+            <dt>Antigen</dt>
+            <dd>
+              Any substance that stimulates an immune response in the body
+              (especially the production of antibodies).
+            </dd>
+            <dt>B-cells</dt>
+            <dd>
+              Cells of the adaptive immune system which bind to specific
+              proteins on the surface of foreign particles and mark them for
+              destruction by other immune cells. Plasma B-cells are mature
+              B-cells which produce and emit antibodies modelled on the immature
+              B-cell's specialised receptors.
+            </dd>
+
+            <dt>Cytokines</dt>
+            <dd>
+              A family of small proteins that regulate the immune response by
+              activating and stimulating other immune cells.
+            </dd>
+            <dt>Endocytosis</dt>
+            <dd>
+              Process in which the cell membrane engulfs a substance to bring it
+              into the cell interior.
+            </dd>
+            <dt>Endosome</dt>
+            <dd>
+              The structure which surrounds a substance brought into the cell
+              via endocytosis.
+            </dd>
+            <dt>Exocytosis</dt>
+            <dd>
+              The opposite of endocytosis. Process in which the cell membrane
+              fuses with an endosome in order to discharge its contents into the
+              extracellular space.
+            </dd>
+            <dt>Granzymes</dt>
+            <dd>
+              Granzymes are particles released by cytotoxic T-cells which induce
+              programmed cell death. Also see 'Perforins'.
+            </dd>
+            <dt>Immune System (Adaptive)</dt>
+            <dd>
+              The arm of the immune system mediated by B- and T-cell
+              lymphocytes. Acquired immunity requires a learning period (about a
+              week or so) before the protective response starts to work. The
+              adaptive (or acquired) immune system is potent and highly specific
+              for a given pathogen. The effect of B-cells is the production of
+              pathogen specific antibodies. T-cells are able to detect infected
+              cells and eliminate them.
+            </dd>
+            <dt>Immune System (Innate)</dt>
+            <dd>
+              Unlike the adaptive immune system, the innate immune system
+              immediately attacks a pathogen, but does not 'remember' it.
+            </dd>
+            <dt>Lipid</dt>
+            <dd>
+              The cell membrane is formed of lipids (lipid bilayer); so are
+              LNPs, hence their ability to fuse with it.
+            </dd>
+            <dt>MHC1 receptors</dt>
+            <dd>
+              Special receptors found on the surface of every cell. They display
+              fragments of all proteins, benevolent or otherwise, produced
+              inside the cell. These fragments are presented to cells of the
+              immune system, which will memorise the protein's characteristics
+              and attempt to neutralise or destroy the pathogen associated with
+              it.
+            </dd>
+            <dt>Nanoparticle</dt>
+            <dd>
+              Any microscopic particle less than about 100 nanometres (nm) in
+              diameter.
+            </dd>
+            <dt>Nucleus</dt>
+            <dd>
+              The central organelle of a Eukaryotic cell that houses the cell's
+              DNA. DNA vaccines deposit their DNA in the nucleus (but don't
+              integrate it with the host DNA). mRNA vaccines bypass the nucleus
+              altogether.
+            </dd>
+            <dt>Perforins</dt>
+            <dd>
+              Perforins are particles released by cytotoxic T-cells that disrupt
+              the cell membrane causing it to burst (lysis). Also see
+              'Granzymes'.
+            </dd>
+            <dt>Ribosome</dt>
+            <dd>
+              Molecular machine in the cell that translates mRNA into protein.
+            </dd>
+            <dt>T-cells</dt>
+            <dd>
+              Cells of the adaptive immune system which direct the immune
+              response. Identification of an antigen will lead to cloning of
+              self, memory T-cells (which remain in the area of infection long
+              after it has been suppressed, and cytotoxic T-cells, which destroy
+              infected cells.
+            </dd>
+            <dt>Transcription</dt>
+            <dd>The process of making an mRNA copy of a sequence of DNA.</dd>
+            <dt>Translation</dt>
+            <dd>
+              The process of decoding mRNA by ribosomes in order to produce
+              proteins.
+            </dd>
+            <dt>Vector (viral)</dt>
+            <dd>
+              A virus, first rendered harmless, then used as a transport vehicle
+              for an antigen.
+            </dd>
+            <dt>Virion</dt>
+            <dd>A viral particle.</dd>
+          </dl>
+          <span class="glossary-back"
+            ><a href="#pageTop" class="ref">Back to top &#8593;</a></span
+          >
+        </div>
+      </aside>
+    </div>
+    <div class="container">
       <footer class="page-footer">
         <section>
           <h2>References</h2>
@@ -663,6 +784,7 @@
             </li>
           </ol>
         </section>
+
         <section>
           <h2>Image credits</h2>
           <ul>

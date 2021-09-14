@@ -1,17 +1,15 @@
-const slideOut = () => {
-  const toggleSlideOut = document.querySelector(".slide-out")
-  const toggleHeader = document.querySelector(".slide-out__header")
-  const toggleContent = document.querySelector(".slide-out__content")
-  const toggleOpenClose = document.querySelector(".slide-out__openclose")
+const reveal = () => {
+  const toggleMainContent = document.querySelector(".content-main")
+  const toggleAsideContent = document.querySelector(".content-aside")
+  const toggleOpenClose = document.querySelector("[data-open-close]")
 
-  toggleHeader.classList.toggle("slide-out__header--open")
-  toggleSlideOut.classList.toggle("slide-out--open")
-  toggleContent.classList.toggle("slide-out__content--open")
-
+  toggleMainContent.classList.toggle("content-main-shrink")
+  toggleAsideContent.classList.toggle("content-aside-grow")
   toggleOpenClose.innerText = toggleOpenClose.innerText === "+" ? "-" : "+"
 }
 
-const slideOutButton = document.querySelector(".slide-out__button")
-slideOutButton.addEventListener("click", () => {
-  slideOut()
+const revealbutton = document.querySelector("[data-glossary-button]")
+
+revealbutton.addEventListener("click", () => {
+  reveal()
 })
